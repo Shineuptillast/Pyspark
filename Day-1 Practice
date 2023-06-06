@@ -1,0 +1,45 @@
+# Spark submit utility
+spark-submit demo.py how_many_executor how_many_memory other_params 
+
+
+# Creating a directory
+hdfs dfs -mkdir /data
+
+# Putting data in the created directory 
+hdfs dfs -copyFromLocal/put ./departments.csv /data/
+
+df1 = spark.read.option('header',True).csv("/data/departments.csv")
+
+df1.printSchema()
+
+df1.show(truncate=False)
+
+df2 = spark.read.option('header',True).option('inferSchema',True).csv('data/departments.csv)
+
+df2.printSchema()
+
+df2.show(truncate=False)
+
+hdfs dfs -put ./employee.csv /data
+
+df3 = spark.read.option('header',True).option('inferSchema',True).csv("/data/employee.csv")
+
+df3.printSchema()
+
+df3.show()
+
+#selecting columns out of dataframe
+
+#Selecting all the columns
+df3.select("*").show()
+
+#selecting only few columns out of the dataframe
+
+df3.select('EMPLOYEE_ID','FIRST_NAME').show()
+
+
+df3.select(col('FIRST_NAME').alias('Fname')).show()
+
+df1
+
+df.filter(col('SALARY') !=8200).show()
