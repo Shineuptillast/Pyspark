@@ -8,5 +8,5 @@ conf.set('spark.executor.memory','2g')
 conf.setAll([('spark.driver.cores','4'),('spark.executors.cores','4')])
 
 # Creating a spark context object using conf
-sc = SparkContext(conf=conf)
+sc = SparkContext.builder.getOrCreate(conf=conf)
 
