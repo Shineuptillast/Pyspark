@@ -10,3 +10,11 @@ conf.setAll([('spark.driver.cores','4'),('spark.executors.cores','4')])
 # Creating a spark context object using conf
 sc = SparkContext.getOrCreate(conf=conf)
 
+# Getting all the configurations using SparkContext object sc
+sc._conf.getAll()
+
+# Setting up some config properties using SparkContext object sc
+sc._conf.set('spark.driver.memory','5g')
+
+
+
