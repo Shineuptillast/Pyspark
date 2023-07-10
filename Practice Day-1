@@ -16,5 +16,15 @@ sc._conf.getAll()
 # Setting up some config properties using SparkContext object sc
 sc._conf.set('spark.driver.memory','5g')
 
+# Creating an RDD
+rdd = sc.range(1,2000)
+rdd.collect()
+
+# Creating an rdd using range function with specified paritions
+rdd1 = sc.range(1,20,2, numSlices=4)
+rdd1.collect()
+
+
+
 
 
