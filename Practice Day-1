@@ -5,4 +5,8 @@ conf = SparkConf()
 conf.set('setMaster','local[3]')
 conf.set('setAppName','Pyspark_app')
 conf.set('spark.executor.memory','2g')
+conf.setAll([('spark.driver.cores','4'),('spark.executors.cores','4')])
+
+# Creating a spark context object using conf
+sc = SparkContext(conf=conf)
 
