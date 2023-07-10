@@ -40,6 +40,10 @@ dict_list = [ {"name": "Naman"},
 rdd4 = sc.parallelize(dict_list)
 rdd4.collect()
 
-# From 
+# collection can be list of any python datatype
+# Data in collection is partitioned by the spark across the cluster nodes
+# Number of partitions depend upon the resources available in the spark cluster to run spark application
+
+
 
 
