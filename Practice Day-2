@@ -1,0 +1,58 @@
+# using map to operate some changes to rdd
+# Incrementing each element by 1
+#map function of RDD operates on each element of the RDD
+rdd=sc.parallelize([1,2,3,4,5,6],3)
+rdd2 = rdd.map(lambda y :y+1)
+rdd2.collect()
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#mapPartitions function operates on each partition rather than operating on each element of rdd
+# mapPartitions takes iterator both as input and gives it as an output
+def func(iterator):
+  result =[]
+  u=0
+  for i in iterator:
+    u+=i
+  result.append(u)
+  return result
+
+rdd3 = sc.parallelize([1,2,3,4,5,6,7],2)
+rdd4 = rdd3.mapPartitions(func)
+rdd4.collect()
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# mapPartitionsWithIndex Its used when we have to apply different transformation on respectives partitions of rdd
+def func(partitionIndex, iterator):
+  if partitonIndex%2 !=0:
+    result = [x**2 for x in iterator]
+  else:
+    result = [x*2 for x in iterator]
+return result
+
+rdd5 = sc.parallelize([1,2,3,4,5,6,7,8,9])
+rdd6=rdd5.mapPartitonsWithIndex(func)
+rdd6.collect()
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# getNumPartitions() Gives the number of partitions of the rdd
+rdd6.getNumpartitions()
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
