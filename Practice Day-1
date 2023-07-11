@@ -59,6 +59,23 @@ rdd6.collect()
 rdd7 = sc.textFile(path="/opt/spark/work-dir/Folder/first_text.txt", 10)
 rdd7.getNumParitions()
 
+# Cache the RDD 
+# Its caching the RDD into Memory
+rdd7 = sc.range(1,20)
+rdd7.is_cached
+# False Because it's hasnt been cached yet into Memory
+rdd7.cache()
+rdd.is_cached
+
+# Persist is the other option to store the RDD into different StorageLevel 
+from pyspark.storagelevel import Storagelevel
+
+rdd8 = sc.parallelize([1,2,3,4,5],4)
+rdd8.persist(StorageLevel.MEMORY_AND_DISK_2)
+rdd8.is_cached
+#True
+print(str(rdd8.getStorageLevel()))
+
 
 
 
