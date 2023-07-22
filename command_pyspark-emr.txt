@@ -1,0 +1,4 @@
+s3://emrbucketforpractice/scripts/pyspark-emr.py
+
+--data_source s3://emrbucketforpractice/inputs/superstore_data.csv
+--save_source s3://emrbucketforpractice/outputs/pyspark-emr
