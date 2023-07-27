@@ -1,0 +1,1 @@
+spark-submit s3://emrbucketforpractice/scripts/pyspark-emr3.py s3://emrbucketforpractice/inputs/data_2.csv s3://emrbucketforpractice/outputs/pyspark-emr-3
